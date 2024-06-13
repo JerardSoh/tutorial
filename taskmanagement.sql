@@ -21,10 +21,8 @@ AUTO_INCREMENT,AUTO_INCREMENT=2;
 
 select * from accounts;
 
+ALTER TABLE accounts
+ADD CONSTRAINT unique_email UNIQUE (email);
+
 INSERT INTO `accounts` (`username`, `password`, `email`, `role`, `status`) VALUES ('John', 'temp1234', 'john.testmail.com', 'admin', 'active');
 INSERT INTO `accounts` (`username`, `password`, `email`, `role`, `status`) VALUES ('Joy', 'temp1234', 'joy.testmail.com', 'user', 'active');
-
-
-
-
-
