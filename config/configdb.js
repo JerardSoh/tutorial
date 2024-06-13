@@ -1,18 +1,13 @@
-const mysql = require('mysql');
+const dotenv = require("dotenv");
+const mysql = require("mysql");
 
-// const dbconnection = mysql.createConnection({
-//     host:"localhost",
-//     user: "root",
-//     password: "password",
-//     database: "taskmanagement"
-// });
-
+dotenv.config("./config.env");
 
 const dbconnection = mysql.createPool({
-    host:"localhost",
-    user: "root",
-    password: "password",
-    database: "taskmanagement"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 module.exports = dbconnection;
