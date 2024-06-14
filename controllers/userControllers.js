@@ -5,9 +5,7 @@ const ErrorHandler = require("../utils/errorHandler");
 const sendToken = require("../utils/jwtToken");
 const bcrypt = require("bcryptjs");
 
-//==================================================================
-//create new user
-//==================================================================
+// create new user
 module.exports.createUser = catchAsyncErrors(async (req, res, next) => {
   const user = req.body;
 
@@ -25,16 +23,13 @@ module.exports.createUser = catchAsyncErrors(async (req, res, next) => {
     if (err) {
       return next(new ErrorHandler("The database server is unavailable, or there is a syntax error in the database query.", 500));
       //throw err;
-    } else {
-      //create JWT Token with utils
-      sendToken(rows.insertId, 200, res);
     }
+    //create JWT Token with utils
+    sendToken(rows.insertId, 200, res);
   });
 });
 
-//==================================================================
-//get user profile
-//==================================================================
+// get user profile
 module.exports.getUserProfile = (req, res, next) => {
   dbconnection.query('select * from accounts where id = "' + req.user.id + '" ', function (err, rows) {
     if (err) {

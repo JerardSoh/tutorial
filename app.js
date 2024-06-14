@@ -24,9 +24,6 @@ app.use(cookieParser());
 // Set up CORS - Accessible by other domains
 app.use(cors());
 
-//==============================================================
-//Importing all routes
-//==============================================================
 const auth = require("./routes/auth");
 const user = require("./routes/user");
 

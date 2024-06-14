@@ -1,17 +1,12 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
+const { isAuthenticatedUser } = require("../middlewares/auth");
+
 //Importing job controller methods
-const { 
-    loginUser,
-    logoutUser
-} = require('../controllers/authControllers');
+const { loginUser, logoutUser } = require("../controllers/authControllers");
 
-const { isAuthenticatedUser } = require('../middlewares/auth');
-
-router.route('/login').post(loginUser);
-router.route('/logout').get(isAuthenticatedUser, logoutUser);
-
-
+router.route("/login").post(loginUser);
+router.route("/logout").get(isAuthenticatedUser, logoutUser);
 
 module.exports = router;
